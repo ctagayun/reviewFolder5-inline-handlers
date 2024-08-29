@@ -644,6 +644,8 @@ REVIEW FOLDER5 - Inline handlers as building blocks in React
    - Tasks: 
        1. The application renders a list of items and allows its users to filter 
           the list via a search feature. 
+
+          
        2. Next the application should render a button next to each list item which 
          allows its users to remove the item from the list.
 

@@ -49,8 +49,12 @@ const initialStories = [
   //    1. useState
   //    2. useEffect 
 
-  const useStorageState = (searchKeyParam, deafaultStateParam) => {
+  //The purpose of this custom hook is to save and fetch from the localtorage
+  //the values that were inputted in the search box.
+  //The actual return value of our custom hook will be displayed in the 
+  //search box.
 
+  const useStorageState = (searchKeyParam, deafaultStateParam) => {
     const [theState, stateSetter] = React.useState(
        localStorage.getItem(searchKeyParam) || deafaultStateParam //provides an initial value to the hook.
     );
@@ -114,7 +118,7 @@ function App() {
           {welcome.greeting} {welcome.title}
       </h1>
        
-       {/* // B - Pass in a callback handler as prop to search component*/}
+       {/* searchTerm is the return value from useStorageState custom hook. */}
        <Search handleSearch={handleSearch} searchTerm={searchTerm}/> 
 
        <hr/>
