@@ -51,7 +51,6 @@ function App() {
     },
   ];
  
-  
   //Make the "stories" stateful
   const [searchTerm, setSearchTerm] = React.useState('initialStories'); 
  
@@ -69,6 +68,7 @@ function App() {
     setSearchTerm(newStories);
   };
  
+   //"initialStories" is the array of houses. story is an new array created by the filter() method.
   const searchedStories = initialStories.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
