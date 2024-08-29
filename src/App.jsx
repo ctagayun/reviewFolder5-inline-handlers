@@ -1,7 +1,22 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-/* eslint-disable no-unused-vars */
+/*
+  Task:
+    Incorporate bootstrap 
+
+  Setup: 
+    npm install bootstrap
+    Once the installation is complete, we can include it in our app’s 
+    entry file in main.jsx :
+    --  Bootstrap CSS
+    import "bootstrap/dist/css/bootstrap.min.css";
+    -- Bootstrap Bundle JS
+    import "bootstrap/dist/js/bootstrap.bundle.min";
+
+    Now since we created the project with Vite, we can rely 
+    on Vite's plugins to integrate ESLint properly. Run the 
+    following command
+       npm install vite-plugin-eslint --save-dev
+    */
+
 import * as React from 'react';
 import Search from './search.jsx';
 import './App.css'
@@ -17,7 +32,7 @@ function App() {
      title: "Chito",
   };
   
-  const stories = [
+  const initialStories = [
     {
       title: 'React',
       url: 'https://reactjs.org/',
@@ -38,17 +53,26 @@ function App() {
  
   
   //Make the "stories" stateful
-  const [searchTerm, setSearchTerm] = React.useState('stories'); 
+  const [searchTerm, setSearchTerm] = React.useState('initialStories'); 
  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value); //update state hook variable in this case "searchTerm"
   }
 
-  const handleClick = () => {
-
+   
+  const handleRemoveStory = (item) => {
+    const newStories = searchTerm.filter(
+      (story) => item.objectID !== story.objectID
+    );
+ 
+    setSearchTerm(newStories);
+  };
+ 
+  const handleClick = (event) => {
+    console.log(`The value of event is ${event.target.value}`);
   }
 
-  const searchedStories = stories.filter((story) =>
+  const searchedStories = initialStories.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -63,7 +87,7 @@ function App() {
 
        <hr/>
 
-       <RenderListUsingArrowFunction list={searchedStories} handleClick={handleClick} />
+       <RenderListUsingArrowFunction list={searchedStories} onRemoveItem={handleRemoveStory} />
         
     </div>
   )

@@ -1,6 +1,6 @@
 import * as React from "react";
-
-const RenderListUsingArrowFunction = (props) => {
+import { ItemMemoized } from './item';
+const RenderListUsingArrowFunction = (props, onRemoveItem) => {
   //Note: all function components by convention receive "props" even 
   //if the function doesn't have the param "props 
     return (
@@ -10,12 +10,7 @@ const RenderListUsingArrowFunction = (props) => {
                Stories currently in the catalog
             </h5>
           </div>
-          title: 'React',
-      url: 'https://reactjs.org/',
-      author: 'Jordan Walke',
-      num_comments: 3,
-      points: 4,
-      objectID: 0,
+       
           <table className="table table-hover">
             <thead>
               <tr>
@@ -25,41 +20,38 @@ const RenderListUsingArrowFunction = (props) => {
                 <th>Num-Comments</th>
                 <th>Points</th>
                 <th>ObjectID</th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               {props.list.map((item) => (
-                  <tr key={item.id}>
-                    {Object.values(item).map((val) => (
-                        <td>{val}</td>
-                  ))}
-                </tr>
-              )
-              )}
+                //   <tr key={item.objectID}>
+                //     {Object.values(item).map((val) => (
+                //         <td>{val}</td>
+                //   ))}
+                //   <span>
+                //   <button type="button" className="btn btn-primary" onClick={props.handleClick} >
+                //     Delete 
+                //   </button>
+                // </span>
+                // </tr>
+                <ItemMemoized
+                      key={item.objectID}
+                      objectID={item.objectID} 
+                      item={item}
+                      onRemoveItem = {onRemoveItem} //contains the onRemoveItem handler
+                  />
+              ))}
             </tbody>
           </table>
-          <button className="btn btn-primary position-relative" >
-            Delete Story
-          </button>
-
-        {/* <ul>
-          {props.list.map( (item) => {  //Using JS Arrow
-            return (
-              <li key={item.objectID}>
-                 <span>
-                  <a href={item.url}>{item.title}</a>
-                </span>
-                <span>{item.author}</span>
-                <span>{item.num_comments}</span>
-                <span>{item.points}</span>
-                <button type="button" onclick={props.handleClick}>Delete Me </button>
-              </li> 
-            ) 
-           })}
-        </ul> */}
       </>
 
     );
 
 };
 export default RenderListUsingArrowFunction;
+
+
+  
+ 

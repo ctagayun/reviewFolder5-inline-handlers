@@ -646,6 +646,8 @@ REVIEW FOLDER5 - Inline handlers as building blocks in React
           the list via a search feature. 
        2. Next the application should render a button next to each list item which 
          allows its users to remove the item from the list.
+
+       3. Incorporate bootstrap
   
    - Solution: 
        - see C:\_AMyReactDev\reviewFolder5-inline-handlers
@@ -669,8 +671,20 @@ REVIEW FOLDER5 - Inline handlers as building blocks in React
          callback handlers to enable the Item component to communicate up to the 
          App component for removing an item by its identifier.
 
+   - Setup Bootstrap
+    npm install bootstrap
+    Once the installation is complete, we can include it in our app’s 
+    entry file in main.jsx :
+    --  Bootstrap CSS
+    import "bootstrap/dist/css/bootstrap.min.css";
+    -- Bootstrap Bundle JS
+    import "bootstrap/dist/js/bootstrap.bundle.min";
 
-999. MEMOIZING
-- see C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects/house-8-forsale-react-async-search-with-delete-add-moize
+    Now since we created the project with Vite, we can rely 
+    on Vite's plugins to integrate ESLint properly. Run the 
+    following command
+       npm install vite-plugin-eslint --save-dev
 
-        
+    MEMOIZING
+       - see C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects/house-8-forsale-react-async-search-with-delete-add-moize
+
