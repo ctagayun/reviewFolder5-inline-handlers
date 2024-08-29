@@ -17,6 +17,18 @@ import * as React from 'react';
    </button>
  
   */
+
+//If you want to make this more elegant though, you can use an inline handler 
+//which allows you to execute the callback handler function in the Item component 
+//right in the JSX. There are two solutions using the incoming onRemoveItem function
+//in the Item component as an inline handler. 
+
+//First, using JavaScript's bind method:
+//Using JavaScript's bind method on a function allows us to bind arguments directly 
+//to that function that should be used when executing it.
+
+//The second and more popular solution is to use an inline arrow function, which allows
+//us to sneak in arguments like the item:
 const Item = ({item, onRemoveItem }) => (
     <tr>
      <td>{item.title}</td>
@@ -26,6 +38,7 @@ const Item = ({item, onRemoveItem }) => (
      <td>{item.points}</td>
      <td>{item.objectID}</td>
      <span>
+     {/* <button type="button" onClick={onRemoveItem.bind(null, item)}> */}
       <button className="btn btn-primary" type="button" onClick={() => onRemoveItem(item)}>
         Delete
       </button>

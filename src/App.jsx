@@ -61,7 +61,7 @@ function App() {
 
    
   const handleRemoveStory = (item) => {
-    console.log
+    console.log(`Item being deleted =  ${item.objectID} ${item.author}`);
     const newStories = searchTerm.filter(
       (story) => item.objectID !== story.objectID
     );
