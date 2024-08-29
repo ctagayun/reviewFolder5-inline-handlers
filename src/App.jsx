@@ -85,7 +85,9 @@ function App() {
   //searchTerm, setSearchTerm respectively
   const [searchTerm, setSearchTerm] = useStorageState(searchKey, defaultState)
 
-  //Now create anoter state for the initialStories list
+  //Now create another state for the initialStories list for the 
+  //purpose of preserving the initialStories list. We are just deleting 
+  //the records from localStorage
   const [stories, setStories] = React.useState(initialStories);
 
 

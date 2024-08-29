@@ -627,7 +627,7 @@ REVIEW FOLDER3 - useEffect and Side Effects
              by managing the order of execution. 
        
 
-REVIEW FOLDER4 - Custom Hooks and localstorage
+REVIEW FOLDER4 - Custom Hooks, localstorage, and MEMOIZING
    see: C:\_AMyReactDev\robinreactcoursedev\hacker10-stories-on-react-custom-hooks
        
    1. React Custom Hooks (Advanced)   
@@ -671,20 +671,36 @@ REVIEW FOLDER5 - Inline handlers as building blocks in React
          callback handlers to enable the Item component to communicate up to the 
          App component for removing an item by its identifier.
 
-   - Setup Bootstrap
-    npm install bootstrap
-    Once the installation is complete, we can include it in our app’s 
-    entry file in main.jsx :
-    --  Bootstrap CSS
-    import "bootstrap/dist/css/bootstrap.min.css";
-    -- Bootstrap Bundle JS
-    import "bootstrap/dist/js/bootstrap.bundle.min";
+        - Setup Bootstrap
+          npm install bootstrap
+          Once the installation is complete, we can include it in our app’s 
+          entry file in main.jsx :
+          --  Bootstrap CSS
+          import "bootstrap/dist/css/bootstrap.min.css";
+          -- Bootstrap Bundle JS
+          import "bootstrap/dist/js/bootstrap.bundle.min";
 
-    Now since we created the project with Vite, we can rely 
-    on Vite's plugins to integrate ESLint properly. Run the 
-    following command
-       npm install vite-plugin-eslint --save-dev
+          Now since we created the project with Vite, we can rely 
+          on Vite's plugins to integrate ESLint properly. Run the 
+          following command
+            npm install vite-plugin-eslint --save-dev
 
-    MEMOIZING
-       - see C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects/house-8-forsale-react-async-search-with-delete-add-moize
+        - MEMOIZING
+            - see C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects/house-8-forsale-react-async-search-with-delete-add-moize
+
+        Questions: 
+          Question: What is an inline function in React?
+            Answer: An inline function in React is often used as a function defined directly 
+            within the JSX.
+
+          Question: What is the advantage of using inline functions for event handlers in React?
+            Answer: Inline functions allow you to pass additional parameters easily.
+
+          Question: What is the alternative to using inline functions for event handlers in React?
+            Answer: Creating handler functions outside the render method and passing references 
+            to them can be an alternative.
+
+          Question: What is the syntax for creating an inline function in a React JSX event handler?
+            Answer: Use arrow function syntax directly within the event handler attribute, 
+            like onClick={() => myFunction()}.
 

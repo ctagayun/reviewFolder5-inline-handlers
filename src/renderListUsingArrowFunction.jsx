@@ -26,16 +26,6 @@ const RenderListUsingArrowFunction = ({list, onRemoveItem}) => {
             </thead>
             <tbody>
               {list.map((item) => (
-                //   <tr key={item.objectID}>
-                //     {Object.values(item).map((val) => (
-                //         <td>{val}</td>
-                //   ))}
-                //   <span>
-                //   <button type="button" className="btn btn-primary" onClick={props.handleClick} >
-                //     Delete 
-                //   </button>
-                // </span>
-                // </tr>
                 <ItemMemoized
                       key={item.objectID}
                       objectID={item.objectID} 
