@@ -61,6 +61,7 @@ function App() {
 
    
   const handleRemoveStory = (item) => {
+    console.log
     const newStories = searchTerm.filter(
       (story) => item.objectID !== story.objectID
     );
@@ -68,10 +69,6 @@ function App() {
     setSearchTerm(newStories);
   };
  
-  const handleClick = (event) => {
-    console.log(`The value of event is ${event.target.value}`);
-  }
-
   const searchedStories = initialStories.filter((story) =>
     story.title.toLowerCase().includes(searchTerm.toLowerCase())
   );

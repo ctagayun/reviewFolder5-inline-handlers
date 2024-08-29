@@ -26,7 +26,7 @@ const Item = ({item, onRemoveItem }) => (
      <td>{item.points}</td>
      <td>{item.objectID}</td>
      <span>
-      <button className="btn btn-primary" type="button" onClick={() => onRemoveItem(house)}>
+      <button className="btn btn-primary" type="button" onClick={() => onRemoveItem(item)}>
         Delete
       </button>
     </span>
