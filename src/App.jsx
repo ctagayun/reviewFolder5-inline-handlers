@@ -24,6 +24,50 @@ import './App.css'
 import RenderListUsingArrowFunction from "./renderListUsingArrowFunction.jsx";
 import RenderListUsingJSFunction from "./renderListUsingJSFunction.jsx";
 
+
+const initialStories = [
+  {
+    title: 'React',
+    url: 'https://reactjs.org/',
+    author: 'Jordan Walke',
+    num_comments: 3,
+    points: 4,
+    objectID: 0,
+  },
+  {
+    title: 'Redux',
+    url: 'https://redux.js.org/',
+    author: 'Dan Abramov, Andrew Clark',
+    num_comments: 2,
+    points: 5,
+    objectID: 1,
+  },
+];
+
+ //Create a custom hook called "useStorageState". We will use two hooks 
+  //to create it:
+  //    1. useState
+  //    2. useEffect 
+
+  const useStorageState = (searchKeyParam, deafaultStateParam) => {
+
+    const [theState, stateSetter] = React.useState(
+       localStorage.getItem(searchKeyParam) || deafaultStateParam //provides an initial value to the hook.
+    );
+
+    //https://react.dev/reference/react/useEffect#useeffect
+    //Since the key comes from outside, the custom hook assumes that it could change,
+    //so it needs to be included in the dependency array of the useEffect hook as well.
+    React.useEffect(() => {
+        localStorage.setItem(searchKeyParam, theState);
+       },
+       [theState, stateSetter] );
+
+    //Custom hooks return values are returned as an array
+    return [theState, stateSetter]; 
+
+ } //EOF create custom hook
+
 //Declaration of App component
 function App() {
 
@@ -32,46 +76,35 @@ function App() {
      title: "Chito",
   };
   
-  const initialStories = [
-    {
-      title: 'React',
-      url: 'https://reactjs.org/',
-      author: 'Jordan Walke',
-      num_comments: 3,
-      points: 4,
-      objectID: 0,
-    },
-    {
-      title: 'Redux',
-      url: 'https://redux.js.org/',
-      author: 'Dan Abramov, Andrew Clark',
-      num_comments: 2,
-      points: 5,
-      objectID: 1,
-    },
-  ];
- 
-  //Make the "stories" stateful
-  const [searchTerm, setSearchTerm] = React.useState('initialStories'); 
- 
+  let searchKey= 'search';
+  let defaultState = 'React'
+
+  //now call our custom hook useLocalStorage to initialize our state 
+  //called "searchTerm". The actual return value of our custom hook is:
+  //return [theState, stateSetter]. But we can rename it. In this case
+  //searchTerm, setSearchTerm respectively
+  const [searchTerm, setSearchTerm] = useStorageState(searchKey, defaultState)
+
+  //Now create anoter state for the initialStories list
+  const [stories, setStories] = React.useState(initialStories);
+
+
+  //Function to delete a a record from the initialStories list
+  const handleRemoveStory = (item) => {
+    console.log(`Item being deleted =  ${item.objectID} ${item.author}`);
+    const newStories = stories.filter(
+      (story) => item.objectID !== story.objectID
+    );
+    setStories(newStories);
+  };
+
+  const searchedStories = stories.filter((story) =>
+    story.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const handleSearch = (event) => {
     setSearchTerm(event.target.value); //update state hook variable in this case "searchTerm"
   }
-
-   
-  const handleRemoveStory = (item) => {
-    console.log(`Item being deleted =  ${item.objectID} ${item.author}`);
-    const newStories = searchTerm.filter(
-      (story) => item.objectID !== story.objectID
-    );
- 
-    setSearchTerm(newStories);
-  };
- 
-   //"initialStories" is the array of houses. story is an new array created by the filter() method.
-  const searchedStories = initialStories.filter((story) =>
-    story.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div>
