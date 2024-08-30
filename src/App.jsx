@@ -118,8 +118,11 @@ function App() {
           {welcome.greeting} {welcome.title}
       </h1>
        
+       
        {/* searchTerm is the return value from useStorageState custom hook. */}
-       <Search handleSearch={handleSearch} searchTerm={searchTerm}/> 
+      <Search id="search" value={searchTerm}  isFocused  onInputChange={handleSearch} >
+         <strong>Searchx:</strong>
+      </Search>
 
        <hr/>
 

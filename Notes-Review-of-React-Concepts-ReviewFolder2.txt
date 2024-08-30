@@ -637,7 +637,8 @@ REVIEW FOLDER4 - Custom Hooks, localstorage, and MEMOIZING
      see  C:\_AMyReactDev\reviewFolder4-custom-hooks-and-localstorage
 
 
-REVIEW FOLDER5 - Inline handlers as building blocks in React
+REVIEW FOLDER5 - Inline handlers, useRef, memoizing, react.children
+                 Delete record
    - Scenario 
        Implement our next feature that enables the removal of items from the list.
 
@@ -689,6 +690,10 @@ REVIEW FOLDER5 - Inline handlers as building blocks in React
 
         - MEMOIZING
             - see C:\_AMyReactDev\chitoreactdev\_guijt-house-react-projects/house-8-forsale-react-async-search-with-delete-add-moize
+            - see C:\_AMyReactDev\reviewFolder5-inline-handlers-custom-hook-delete-item-memoizing\src\item.jsx
+
+        - useRef 
+            - see https://react.dev/reference/react/useRef
 
         Questions: 
           Question: What is an inline function in React?
